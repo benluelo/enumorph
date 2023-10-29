@@ -1,0 +1,5 @@
+error: only variants with one field are supported
+ --> tests/ui/compile_fail/multiple_named_fields_generic.rs:3:7
+  |
+3 |     A { b: T, c: u8 },
+  |       ^^^^^^^^^^^^^^^

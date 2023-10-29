@@ -1,0 +1,5 @@
+error: only variants with one field are supported
+ --> tests/ui/compile_fail/multiple_unnamed_fields.rs:3:6
+  |
+3 |     A(u8, u8),
+  |      ^^^^^^^^

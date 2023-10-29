@@ -1,0 +1,15 @@
+error[E0119]: conflicting implementations of trait `TryFrom<Enum>` for type `u8`
+ --> tests/ui/compile_fail/same_inner_type.rs:4:12
+  |
+3 |     A(u8),
+  |       -- first implementation here
+4 |     B { c: u8 },
+  |            ^^ conflicting implementation for `u8`
+
+error[E0119]: conflicting implementations of trait `From<u8>` for type `Enum`
+ --> tests/ui/compile_fail/same_inner_type.rs:4:12
+  |
+3 |     A(u8),
+  |       -- first implementation here
+4 |     B { c: u8 },
+  |            ^^ conflicting implementation for `Enum`
