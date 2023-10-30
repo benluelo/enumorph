@@ -3,40 +3,52 @@
 Derive macro to generate `TryFrom` and `From` implementations for converting between newtype enum variants and their wrapped values.
 
 ```rust
+use std::fmt::Display;
+
+use enumorph::Enumorph;
+
 #[derive(Enumorph)]
 enum Enum<T: ToOwned + ?Sized, U>
 where
     U: Display,
 {
     A(A<T>),
-    B { b: B<U> },
+    B {
+        b: B<U>,
+    },
     #[enumorph(ignore)]
     C,
     #[enumorph(ignore)]
     D {
         e: u8,
         f: bool,
-    }
+    },
 }
 
 struct A<T: ToOwned + ?Sized>(T::Owned);
 
 struct B<U: Display>(U);
 
-// Enum::A(A("a"))
-Enum::<str, u8>::from(A("a".to_owned()));
+fn main() {
+    assert!(matches!(
+        Enum::<str, u8>::from(A("a".to_owned())),
+        Enum::A(A(_))
+    ));
 
-// Ok(A("a"))
-A::try_from(Enum::<str, u8>::A(A("a".to_owned())));
+    assert!(matches!(
+        A::try_from(Enum::<str, u8>::A(A("a".to_owned()))),
+        Ok(A(_))
+    ));
 
-// Enum::B { b: B(1) }
-Enum::<str, u8>::from(B(1));
+    assert!(matches!(Enum::<str, u8>::from(B(1)), Enum::B { b: B(1) }));
 
-// Ok(B(1))
-B::try_from(Enum::<str, u8>::B(B(1));
+    assert!(matches!(
+        B::try_from(Enum::<str, u8>::B { b: B(1) }),
+        Ok(B(1))
+    ));
 
-// Err(Enum::C)
-B::try_from(Enum::<str, u8>::C);
+    assert!(matches!(B::try_from(Enum::<str, u8>::C), Err(Enum::C)));
+}
 ```
 
 ## Limitations
