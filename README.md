@@ -11,12 +11,12 @@ where
     A(A<T>),
     B { b: B<U> },
     #[enumorph(ignore)]
-		C,
+    C,
     #[enumorph(ignore)]
-		D {
-				e: u8,
-				f: bool,
-		}
+    D {
+        e: u8,
+        f: bool,
+    }
 }
 
 struct A<T: ToOwned + ?Sized>(T::Owned);
@@ -47,7 +47,7 @@ If two variants "wrap" the same type, then the resulting From and TryFrom implem
 #[derive(Enumorph)]
 enum T {
     U(U),
-		V(V),
+    V(V),
 }
 
 struct U(String);
