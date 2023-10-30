@@ -4,6 +4,8 @@ version = "0.1.1"
 edition = "2021"
 description = "Derive macro to generate `TryFrom` and `From` implementations for converting between newtype enum variants and their wrapped values"
 license = "MIT OR Apache-2.0"
+repository = "https://github.com/benluelo/enumorph"
+homepage = "https://github.com/benluelo/enumorph"
 
 [lib]
 proc-macro = true
