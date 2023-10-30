@@ -1,6 +1,6 @@
 [package]
 name = "enumorph"
-version = "0.1.0"
+version = "0.1.1"
 edition = "2021"
 description = "Derive macro to generate `TryFrom` and `From` implementations for converting between newtype enum variants and their wrapped values"
 license = "MIT OR Apache-2.0"
