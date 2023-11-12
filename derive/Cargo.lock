@@ -12,20 +12,13 @@ dependencies = [
 ]
 
 [[package]]
-name = "enumorph"
-version = "0.1.2"
-dependencies = [
- "enumorph-derive",
- "trybuild",
-]
-
-[[package]]
 name = "enumorph-derive"
 version = "0.1.2"
 dependencies = [
  "proc-macro2",
  "quote",
  "syn",
+ "trybuild",
 ]
 
 [[package]]
