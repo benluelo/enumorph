@@ -118,20 +118,20 @@ fn mk_impls(
 ) -> proc_macro2::TokenStream {
     quote_spanned! {field_type.span()=>
         #[automatically_derived]
-        impl #impl_generics ::std::convert::TryFrom<#enum_ident #ty_generics> for #field_type #where_clause {
+        impl #impl_generics ::core::convert::TryFrom<#enum_ident #ty_generics> for #field_type #where_clause {
             type Error = #enum_ident #ty_generics;
 
-            fn try_from(value: #enum_ident #ty_generics) -> ::std::result::Result<Self, Self::Error> {
+            fn try_from(value: #enum_ident #ty_generics) -> ::core::result::Result<Self, Self::Error> {
                 match value {
-                    #enum_ident::#variant_name { #field_name: t, .. } => ::std::result::Result::Ok(t),
+                    #enum_ident::#variant_name { #field_name: t, .. } => ::core::result::Result::Ok(t),
                     #[allow(unreachable_patterns)] // triggers on enums with one variant
-                    _ => ::std::result::Result::Err(value),
+                    _ => ::core::result::Result::Err(value),
                 }
             }
         }
 
         #[automatically_derived]
-        impl #impl_generics ::std::convert::From<#field_type> for #enum_ident #ty_generics #where_clause {
+        impl #impl_generics ::core::convert::From<#field_type> for #enum_ident #ty_generics #where_clause {
             fn from(value: #field_type) -> Self {
                 #[allow(clippy::init_numbered_fields)]
                 #enum_ident::#variant_name { #field_name: value }

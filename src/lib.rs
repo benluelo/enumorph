@@ -1,3 +1,5 @@
+#![no_std]
+
 pub use enumorph_derive::Enumorph;
 
 /// Convenience trait around the conversions provided by [`Enumorph`], but with
