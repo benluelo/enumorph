@@ -1,16 +1,19 @@
 [workspace]
-
 members = ["derive"]
 
 [package]
 name = "enumorph"
-version = "0.1.2"
+version = "0.1.3"
 edition = "2021"
+description = "Derive macro to generate `TryFrom` and `From` implementations for converting between newtype enum variants and their wrapped values"
+license = "MIT OR Apache-2.0"
+repository = "https://github.com/benluelo/enumorph"
+homepage = "https://github.com/benluelo/enumorph"
 
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 
 [dependencies]
-enumorph-derive = { path = "derive" }
+enumorph-derive = { path = "derive", version = "0.1.3" }
 
 [dev-dependencies]
 trybuild = "1.0.85"
